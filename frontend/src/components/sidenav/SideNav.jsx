@@ -8,16 +8,13 @@ import {
   faChartBar,
   faCog
 } from "@fortawesome/free-solid-svg-icons";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-// import Home from "./Home";
-// import Servers from "./Servers";
-// import Users from "./Users";
-// import Reports from "./Reports";
-// import Settings from "./Settings";
+import { BrowserRouter as Router, Route, Routes, Link, useParams } from "react-router-dom";
+import Home from "../../pages/Home";
 import "./SideNav.scss";
 
 const SideNav = () => {
   const [menus, setMenus] = useState([]);
+  const {page} = useParams();
 
   useEffect(() => {
     axios
@@ -56,15 +53,11 @@ const SideNav = () => {
             </Link>
           ))}
         </div>
-        {/* <div className="main-content">
+        <div className="main-content">
           <Routes>
-            <Route path="/home" element={<Home />} />
-            <Route path="/servers" element={<Servers />} />
-            <Route path="/users" element={<Users />} />
-            <Route path="/reports" element={<Reports />} />
-            <Route path="/settings" element={<Settings />} />
+            <Route path={`/:${page}`} element={<Home />} />
           </Routes>
-        </div> */}
+        </div>
       </div>
     </Router>
   );
