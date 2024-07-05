@@ -1,0 +1,34 @@
+{
+  "menus": [
+    {
+      "label": "Home",
+      "link": "/home",
+      "icon": "home",
+      "children": []
+    },
+    {
+      "label": "Servers",
+      "link": "/servers",
+      "icon": "servers",
+      "children": []
+    },
+    {
+      "label": "Users",
+      "link": "/users",
+      "icon": "users",
+      "children": []
+    },
+    {
+      "label": "Reports",
+      "link": "/reports",
+      "icon": "reports",
+      "children": []
+    },
+    {
+      "label": "Settings",
+      "icon": "settings",
+      "link": "/settings",
+      "children": []
+    }
+  ]
+}
