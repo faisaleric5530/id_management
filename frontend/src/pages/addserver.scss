@@ -1,0 +1,58 @@
+
+.serverInfo {
+  width: 55%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  position: absolute;
+  top: 55%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  color: grey;
+
+  form {
+    width: 100%;
+    padding: 1rem;
+  }
+}
+
+.addserverLables {
+  font-size: small;
+  color: grey;
+}
+
+.formGroup {
+  width: 50%;
+  margin-top: 10px;
+}
+
+.inputFields {
+  border: none;
+  border-bottom: 1px solid grey;
+  border-radius: 0px;
+
+  ::after {
+    border: none;
+    border-bottom: 1px solid grey;
+    border-radius: 0px;
+  }
+}
+
+.connection {
+  color: #5638ce;
+  font-size: small;
+}
+
+.blueBtns {
+  background-color: #5638ce;
+  border: none;
+  color: white;
+  border-radius: 0.3rem;
+  padding: 10px 20px;
+  margin: 20px 0px;
+  cursor: pointer;
+}

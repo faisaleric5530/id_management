@@ -4,6 +4,7 @@ import SideNav from "../sidenav/SideNav.jsx";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "../../pages/Home.jsx";
 import ServerList from "../../pages/serverList.jsx";
+import Adding from "../../pages/adding.jsx";
 import ServerDetails from "../../pages/serverDetails.jsx";
 
 const Main = () => {
@@ -27,7 +28,7 @@ const Main = () => {
             <Routes>
               <Route path="/home" element={<Home />} />
               <Route path="/servers" element={<ServerList />} />
-              <Route path="/servers/addServer" element={<ServerList />} />
+              <Route path="/servers/addServer" element={<Adding />} />
             </Routes>
           </div>
         </div>
