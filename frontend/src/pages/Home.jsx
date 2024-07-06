@@ -1,10 +1,10 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import "./index.scss";
 
 const Home = (currentPage) => {
   return (
     <>
-      <h2>Dashboard</h2>
+      <p className="page-title">Dashboard</p>
       <div className="chartDiv">
         
       </div>

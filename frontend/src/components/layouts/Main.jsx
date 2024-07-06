@@ -1,9 +1,9 @@
 import React from "react";
-import "./Main.scss";
 import Header from "../header/Header.jsx";
 import SideNav from "../sidenav/SideNav.jsx";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "../../pages/Home.jsx";
+import ServerList from "../../pages/serverList.jsx";
 import ServerDetails from "../../pages/serverDetails.jsx";
 
 const Main = () => {
@@ -22,11 +22,12 @@ const Main = () => {
           <SideNav />
           <div
             className="pageNavigation"
-            style={{ width: "calc(100% - 200px)", padding: "1rem" }}
+            style={{ width: "calc(100% - 200px)"}}
           >
             <Routes>
               <Route path="/home" element={<Home />} />
-              <Route path="/servers" element={<ServerDetails />} />
+              <Route path="/servers" element={<ServerList />} />
+              <Route path="/servers/addServer" element={<ServerList />} />
             </Routes>
           </div>
         </div>
