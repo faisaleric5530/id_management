@@ -6,15 +6,13 @@ import {
   faServer,
   faUsers,
   faChartBar,
-  faCog
+  faCog,
 } from "@fortawesome/free-solid-svg-icons";
-import { BrowserRouter as Router, Route, Routes, Link, useParams } from "react-router-dom";
-import Home from "../../pages/Home";
+import { Link } from "react-router-dom";
 import "./SideNav.scss";
 
 const SideNav = () => {
   const [menus, setMenus] = useState([]);
-  const {page} = useParams();
 
   useEffect(() => {
     axios
@@ -37,29 +35,22 @@ const SideNav = () => {
     servers: faServer,
     users: faUsers,
     reports: faChartBar,
-    settings: faCog
+    settings: faCog,
   };
 
   return (
-    <Router>
-      <div className="app">
-        <div className="sidenav">
-          {menus.map((menu, index) => (
-            <Link key={index} to={menu.link} className="sidenav-link">
-              <div className="sidenav-item">
-                <FontAwesomeIcon icon={iconMapping[menu.icon]} className="icon" />
-                <span>{menu.label}</span>
-              </div>
-            </Link>
-          ))}
-        </div>
-        <div className="main-content">
-          <Routes>
-            <Route path={`/:${page}`} element={<Home />} />
-          </Routes>
-        </div>
+    <div className="app">
+      <div className="sidenav">
+        {menus.map((menu, index) => (
+          <Link key={index} to={menu.link} className="sidenav-link">
+            <div className="sidenav-item">
+              <FontAwesomeIcon icon={iconMapping[menu.icon]} className="icon" />
+              <span>{menu.label}</span>
+            </div>
+          </Link>
+        ))}
       </div>
-    </Router>
+    </div>
   );
 };
 
