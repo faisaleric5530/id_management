@@ -30,7 +30,11 @@ const serverList = () => {
           <tbody>
             {serverData.map((server, index) => (
               <tr key={index}>
-                <td style={{color : "#5638ce", cursor : "pointer"}}>{server.name}</td>
+                <td style={{color : "#5638ce", cursor : "pointer"}}>
+                <Link to="/servers/serverDetails" style={{textDecoration : "none"}}>
+                  {server.name}
+                </Link>
+                </td>
                 <td>{server.ip}</td>
                 <td>{server.port}</td>
                 <td>{server.users}</td>

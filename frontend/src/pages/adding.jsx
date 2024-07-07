@@ -8,6 +8,7 @@ import * as Yup from "yup";
 const Adding = () => {
   const [connection, setConnection] = useState("");
   const [addserver, setAddserver] = useState("");
+  const [cancelbtn, setCancelbtn] = useState(false);
 
   const initialValues = {
     hostName: "",
@@ -248,15 +249,15 @@ const Adding = () => {
                   marginTop: "20px",
                 }}
               >
-                <Button
-                  className="blueBtns"
+                <button
+                  className={connection ? "blueBtnsSelected" : "blueBtns"}
                   type="button"
                   onClick={() => setConnection(`"Connected Successfully"`)}
                 >
                   Test Connection
-                </Button>
-                <Button
-                  className="blueBtns"
+                </button>
+                <button
+                  className={addserver ? "blueBtnsSelected" : "blueBtns"}
                   type="submit"
                   onClick={() => {
                     setConnection("");
@@ -264,14 +265,14 @@ const Adding = () => {
                   }}
                 >
                   Add Server
-                </Button>
-                <Button
-                  className="blueBtns"
+                </button>
+                <button
+                  className={cancelbtn ? "blueBtnsSelected" : "blueBtns"}
                   type="button"
-                  onClick={() => console.log("Cancel")}
+                  onClick={() => setCancelbtn(true)}
                 >
                   Cancel
-                </Button>
+                </button>
               </div>
               <p className="connection">{connection ? connection : ""}</p>
               <p className="connection">{addserver ? addserver : ""}</p>

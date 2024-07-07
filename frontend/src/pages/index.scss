@@ -1,13 +1,91 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .page-title {
-    background-color: rgb(236, 233, 233);
-    font-size: large;
-    font-weight: 500;
-    padding: 0.8rem;
+  background-color: rgb(236, 233, 233);
+  font-size: large;
+  font-weight: 500;
+  padding: 0.8rem;
+}
+
+.server-details {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 1rem;
+}
+
+.details {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+
+  div {
+    width: 50%;
+  }
+}
+
+.details p {
+  margin-bottom: 1rem;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: #fff;
+  margin-right: 1rem;
+  &:hover {
+    background-color: #0069d9;
+  }
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table thead tr th {
+  padding: 0.5rem;
+  text-align: left;
+  background-color: #5638ce;
+  color: white;
+ border: none;
+  border-bottom: 1px solid #ddd;
+}
+
+.table tbody tr td {
+  padding: 0.5rem;
+ border: none;
+  border-bottom: 1px solid #ddd;
+}
+
+.connection {
+  color: #5638ce;
+  font-size: small;
+}
+
+.blueButtons {
+  background-color: #5638ceb9;
+  border: none;
+  color: white;
+  border-radius: 0.3rem;
+  padding: 10px 20px;
+  margin: 20px 0px;
+  cursor: pointer;
+}
+.selectedBlueButton {
+  background-color: #5638ce;
+  border: none;
+  color: white;
+  border-radius: 0.3rem;
+  padding: 10px 20px;
+  margin: 20px 0px;
+  cursor: pointer;
 }

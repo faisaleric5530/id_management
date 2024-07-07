@@ -1,4 +1,3 @@
-
 .serverInfo {
   width: 55%;
   display: flex;
@@ -48,6 +47,19 @@
 }
 
 .blueBtns {
+  background-color: #5638ceb9;
+  border: none;
+  color: white;
+  border-radius: 0.3rem;
+  padding: 10px 20px;
+  margin: 20px 0px;
+  cursor: pointer;
+
+  :hover {
+    background-color: #5638ce !important;
+  }
+}
+.blueBtnsSelected {
   background-color: #5638ce;
   border: none;
   color: white;
@@ -55,4 +67,8 @@
   padding: 10px 20px;
   margin: 20px 0px;
   cursor: pointer;
+
+  :hover {
+    background-color: #5638ce !important;
+  }
 }
