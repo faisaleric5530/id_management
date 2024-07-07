@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import "./index.scss";
 import "./addserver.scss";
-import { Formik, Field, Form, ErrorMessage } from "formik";
-import { InputGroup, Button, Form as BootstrapForm } from "react-bootstrap";
-import * as Yup from "yup";
+import { Formik, Field, Form } from "formik";
+import { InputGroup, Form as BootstrapForm } from "react-bootstrap";
 
 const Adding = () => {
   const [connection, setConnection] = useState("");
@@ -21,25 +20,6 @@ const Adding = () => {
     passphrase: "",
   };
 
-  const validationSchema = Yup.object().shape({
-    hostName: Yup.string().required("Host Name is required"),
-    ipAddress: Yup.string().required("IP Address is required"),
-    port: Yup.number().required("Port is required").positive().integer(),
-    username: Yup.string().required("Username is required"),
-    password: Yup.string().when("useSecretKey", {
-      is: false,
-      then: Yup.string().required("Password is required"),
-    }),
-    secretKeyFile: Yup.mixed().when("useSecretKey", {
-      is: true,
-      then: Yup.mixed().required("Secret Key File is required"),
-    }),
-    passphrase: Yup.string().when("useSecretKey", {
-      is: true,
-      then: Yup.string().required("Passphrase is required"),
-    }),
-  });
-
   const onSubmit = (values) => {
     console.log(values);
   };
@@ -48,11 +28,7 @@ const Adding = () => {
     <>
       <p className="page-title">Add New Server</p>
       <div className="serverInfo">
-        <Formik
-          initialValues={initialValues}
-          validationSchema={validationSchema}
-          onSubmit={onSubmit}
-        >
+        <Formik initialValues={initialValues} onSubmit={onSubmit}>
           {({ setFieldValue, values }) => (
             <Form>
               <p
@@ -65,25 +41,18 @@ const Adding = () => {
                 Server Information
               </p>
 
-              <BootstrapForm.Group
-                className="formGroup w-100"
-                controlId="hostName"
-              >
-                <BootstrapForm.Label className="addserverLables">
-                  Host Name
-                </BootstrapForm.Label>
+              <BootstrapForm.Group className="formGroup w-100" controlId="hostName">
                 <InputGroup>
                   <Field
                     className="inputFields"
                     name="hostName"
                     as={BootstrapForm.Control}
+                    placeholder="Host Name"
                   />
+                  <BootstrapForm.Label className="addserverLables">
+                    Host Name
+                  </BootstrapForm.Label>
                 </InputGroup>
-                <ErrorMessage
-                  name="hostName"
-                  component="div"
-                  className="text-danger"
-                />
               </BootstrapForm.Group>
 
               <div
@@ -95,43 +64,32 @@ const Adding = () => {
                   gap: "1rem",
                 }}
               >
-                <BootstrapForm.Group
-                  className="formGroup"
-                  controlId="ipAddress"
-                >
-                  <BootstrapForm.Label className="addserverLables">
-                    IP Address
-                  </BootstrapForm.Label>
+                <BootstrapForm.Group className="formGroup" controlId="ipAddress">
                   <InputGroup>
                     <Field
                       className="inputFields"
                       name="ipAddress"
                       as={BootstrapForm.Control}
+                      placeholder="IP Address*"
                     />
+                    <BootstrapForm.Label className="addserverLables">
+                      IP Address
+                    </BootstrapForm.Label>
                   </InputGroup>
-                  <ErrorMessage
-                    name="ipAddress"
-                    component="div"
-                    className="text-danger"
-                  />
                 </BootstrapForm.Group>
 
                 <BootstrapForm.Group className="formGroup" controlId="port">
-                  <BootstrapForm.Label className="addserverLables">
-                    Port
-                  </BootstrapForm.Label>
                   <InputGroup>
                     <Field
                       className="inputFields"
                       name="port"
                       as={BootstrapForm.Control}
+                      placeholder="Port*"
                     />
+                    <BootstrapForm.Label className="addserverLables">
+                      Port
+                    </BootstrapForm.Label>
                   </InputGroup>
-                  <ErrorMessage
-                    name="port"
-                    component="div"
-                    className="text-danger"
-                  />
                 </BootstrapForm.Group>
               </div>
 
@@ -145,106 +103,82 @@ const Adding = () => {
                 }}
               >
                 <BootstrapForm.Group className="formGroup" controlId="username">
-                  <BootstrapForm.Label className="addserverLables">
-                    Username
-                  </BootstrapForm.Label>
                   <InputGroup>
                     <Field
                       className="inputFields"
                       name="username"
                       as={BootstrapForm.Control}
+                      placeholder="Username*"
                     />
+                    <BootstrapForm.Label className="addserverLables">
+                      Username
+                    </BootstrapForm.Label>
                   </InputGroup>
-                  <ErrorMessage
-                    name="username"
-                    component="div"
-                    className="text-danger"
-                  />
                 </BootstrapForm.Group>
 
                 <BootstrapForm.Group className="formGroup" controlId="password">
-                  <BootstrapForm.Label className="addserverLables">
-                    Password
-                  </BootstrapForm.Label>
                   <InputGroup>
                     <Field
                       className="inputFields"
                       name="password"
                       type="password"
                       as={BootstrapForm.Control}
+                      placeholder="Password*"
                     />
+                    <BootstrapForm.Label className="addserverLables">
+                      Password
+                    </BootstrapForm.Label>
                   </InputGroup>
-                  <ErrorMessage
-                    name="password"
-                    component="div"
-                    className="text-danger"
-                  />
                 </BootstrapForm.Group>
               </div>
 
-              <BootstrapForm.Group
-                className="formGroup"
-                controlId="useSecretKey"
-              >
+              <BootstrapForm.Group className="formGroup" controlId="useSecretKey">
                 <BootstrapForm.Check
                   type="checkbox"
                   label="Use Secret Key"
                   checked={values.useSecretKey}
-                  onChange={() =>
-                    setFieldValue("useSecretKey", !values.useSecretKey)
-                  }
+                  onChange={() => setFieldValue("useSecretKey", !values.useSecretKey)}
                   style={{
                     margin: "1rem 0px",
                   }}
                 />
               </BootstrapForm.Group>
 
-              <BootstrapForm.Group
-                className="formGroup"
-                controlId="secretKeyFile"
-              >
-                <InputGroup>
-                  <input
-                    name="secretKeyFile"
-                    type="file"
-                    onChange={(event) => {
-                      setFieldValue(
-                        "secretKeyFile",
-                        event.currentTarget.files[0]
-                      );
-                    }}
-                  />
-                </InputGroup>
-                <ErrorMessage
-                  name="secretKeyFile"
-                  component="div"
-                  className="text-danger"
-                />
-              </BootstrapForm.Group>
+              {values.useSecretKey && (
+                <>
+                  <BootstrapForm.Group className="formGroup" controlId="secretKeyFile">
+                    <InputGroup>
+                      <input
+                        name="secretKeyFile"
+                        type="file"
+                        onChange={(event) => {
+                          setFieldValue("secretKeyFile", event.currentTarget.files[0]);
+                        }}
+                      />
+                    </InputGroup>
+                  </BootstrapForm.Group>
 
-              <BootstrapForm.Group className="formGroup" controlId="passphrase">
-                <BootstrapForm.Label>Passphrase</BootstrapForm.Label>
-                <InputGroup>
-                  <Field
-                    className="inputFields"
-                    name="passphrase"
-                    as={BootstrapForm.Control}
-                  />
-                </InputGroup>
-                <ErrorMessage
-                  name="passphrase"
-                  component="div"
-                  className="text-danger"
-                />
-              </BootstrapForm.Group>
+                  <BootstrapForm.Group className="formGroup" controlId="passphrase">
+                    <InputGroup>
+                      <Field
+                        className="inputFields"
+                        name="passphrase"
+                        as={BootstrapForm.Control}
+                        placeholder="Passphrase"
+                      />
+                      <BootstrapForm.Label className="addserverLables">
+                        Passphrase
+                      </BootstrapForm.Label>
+                    </InputGroup>
+                  </BootstrapForm.Group>
+                </>
+              )}
 
               <div
                 style={{
                   display: "flex",
                   justifyContent: "start",
                   alignItems: "center",
-                  gap: "1rem",
-                  marginTop: "20px",
                   gap: "1rem",
                   marginTop: "20px",
                 }}
@@ -261,7 +195,7 @@ const Adding = () => {
                   type="submit"
                   onClick={() => {
                     setConnection("");
-                    setAddserver(`"Server Added Succesfully"`)
+                    setAddserver(`"Server Added Successfully"`);
                   }}
                 >
                   Add Server
@@ -269,7 +203,11 @@ const Adding = () => {
                 <button
                   className={cancelbtn ? "blueBtnsSelected" : "blueBtns"}
                   type="button"
-                  onClick={() => setCancelbtn(true)}
+                  onClick={() => {
+                    setCancelbtn(true);
+                    setConnection("");
+                    setAddserver("");
+                  }}
                 >
                   Cancel
                 </button>

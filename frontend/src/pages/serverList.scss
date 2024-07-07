@@ -11,12 +11,22 @@
 }
 
 .serverLists button {
+  background-color: #5638ceb9;
+  border: none;
+  color: white;
+  border-radius: 0.3rem;
+  padding: 10px 20px;
+  margin: 0px 0px 20px 0px;
+  cursor: pointer;
+}
+
+.clickedBtn {
   background-color: #5638ce;
   border: none;
   color: white;
   border-radius: 0.3rem;
   padding: 10px 20px;
-  margin: 20px 0px;
+  margin: 0px 0px 20px 0px;
   cursor: pointer;
 }
 

@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import "./index.scss";
 import "./serverList.scss";
 import { Table, Button } from "reactstrap";
 import { Link } from "react-router-dom";
 
-const serverList = () => {
+const ServerList = () => {
+  const [clicked,setClicked] = useState(false);
+
   const serverData = [
     { name: "localhost_1", ip: "10.10.10.2", port: 22, users: 1 },
     { name: "localhost_2", ip: "10.10.10.1", port: 22, users: 2 },
@@ -16,7 +18,7 @@ const serverList = () => {
       <p className="page-title">Servers List</p>
       <div className="serverLists">
         <Link to="/servers/addServer">
-          <Button>+ ADD NEW SERVER</Button>
+          <Button className={clicked ? "" : "clickedBtn"} onClick={()=> setClicked(true)}>+ ADD NEW SERVER</Button>
         </Link>
         <Table bordered>
           <thead>
@@ -47,4 +49,4 @@ const serverList = () => {
   );
 };
 
-export default serverList;
+export default ServerList;
